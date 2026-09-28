@@ -115,10 +115,11 @@ Android 不允许普通应用直接点击别的应用，所以「轻跳」需要
 
 ```bash
 # Linux / macOS
+cd packages
 sha256sum -c SHA256SUMS.txt
 
 # Windows PowerShell
-Get-FileHash *.apk -Algorithm SHA256
+Get-FileHash packages\*.apk -Algorithm SHA256
 ```
 
 当前最新版本：
