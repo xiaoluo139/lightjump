@@ -1,0 +1,9 @@
+# 构建产物
+build/
+.gradle/
+*.iml
+.idea/
+
+# 系统文件
+.DS_Store
+Thumbs.db

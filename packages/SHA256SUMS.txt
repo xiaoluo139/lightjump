@@ -1,0 +1,3 @@
+# 本目录内安装包的校验值，校验方式：sha256sum -c SHA256SUMS.txt
+# 历史版本的校验值见仓库根目录 README.md
+99c56977135fb59a875e77eb9917bbd7e598b67a36ad2256df8278604de95efd  LightJump-v1.7.0.apk
