@@ -6,6 +6,9 @@
 
 本仓库是「轻跳」的**安装包发布仓库**，提供 APK 下载、版本信息、文件校验值和第三方组件说明。
 
+安装包内置 **Lin-arm（id667）v595** 与 **AIsouler v406** 两套规则，去重后覆盖 **978 款应用**，
+装好开启无障碍就能用。
+
 ![Android 8.0+](https://img.shields.io/badge/Android-8.0%2B-3DDC84?logo=android&logoColor=white)
 ![License GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue)
 ![Latest release](https://img.shields.io/github/v/release/xiaoluo139/lightjump?label=release)
@@ -15,10 +18,10 @@
 | 文件 | 版本 | 大小 | 说明 |
 | --- | --- | --- | --- |
 | [`packages/LightJump-v1.7.0.apk`](packages/LightJump-v1.7.0.apk) | 1.7.0（versionCode 9） | 5.90 MiB | 最新版本 |
-| [Releases 页面](https://github.com/xiaoluo139/lightjump/releases) | — | — | 全部历史版本安装包 |
+| [Releases 页面](https://github.com/xiaoluo139/lightjump/releases) | 1.7.0 | 5.90 MiB | 同一个安装包，Release 附件 |
 
-在手机上直接点击下载即可。也可以在 [Releases](https://github.com/xiaoluo139/lightjump/releases)
-页面按版本下载，或扫描页面上的二维码分享给其他人。
+仓库只保留最新版本的安装包，在手机上直接点击上面任一链接即可下载；
+也可以把页面链接分享给其他人。
 
 ### 版本信息
 
@@ -32,17 +35,6 @@
 | CPU 架构 | arm64-v8a、x86_64（通用包，绝大多数手机可用） |
 | 签名 | Android 调试证书（自签名） |
 
-### 历史版本
-
-历史安装包发布在 [Releases](https://github.com/xiaoluo139/lightjump/releases) 页面。
-
-| 版本 | versionCode | 大小 | SHA-256 |
-| --- | --- | --- | --- |
-| 1.7.0 | 9 | 5.90 MiB | `99c56977135fb59a875e77eb9917bbd7e598b67a36ad2256df8278604de95efd` |
-| 1.6.0 | 8 | 5.91 MiB | `0a46c87734537b49097c43e2cc4b12c1897ec1d6676bce890a97566c1dc5b4ef` |
-| 1.3.0 | 5 | 5.90 MiB | `14e69ae9e462fb279171635e081ef7206deecba58cc0e9b58c438cb205d05365` |
-| 1.1.1 | 3 | 4.22 MiB | `99c77aa90439eb13bf26a6b0b64f68fa02a6639149ed62e7a91377b6ab9208ff` |
-
 ## 它是什么
 
 Android 不允许普通应用直接点击别的应用，所以「轻跳」需要借助系统的**无障碍服务**来读取屏幕内容，
@@ -51,10 +43,34 @@ Android 不允许普通应用直接点击别的应用，所以「轻跳」需要
 「轻跳」把 GKD 的完整功能裁剪成了一条最短路径：安装后按引导做三步设置就能用，
 不需要理解规则语法，也不需要自己订阅规则。
 
+## 内置规则
+
+「轻跳」把两套第三方 GKD 订阅规则直接内置在安装包里，**安装后无需配置、无需联网即可生效**，
+去重后共覆盖 **978 款应用**。
+
+| 订阅 | 作者 | 版本 | 覆盖应用 | 规则组 | 规则条数 |
+| --- | --- | --- | --- | --- | --- |
+| id667 的 GKD 订阅（👻 Fork 版） | Lin-arm | v595 | 978 | 2436 | 4967 |
+| AIsouler 的 GKD 订阅 | AIsouler | v406 | 886 | 2074 | 4825 |
+| **去重合计** | — | — | **978** | — | — |
+
+- 两个订阅的应用集合是包含关系：AIsouler 的 886 个应用全部包含在 Lin-arm 订阅中，
+  Lin-arm 另有 92 个独占应用。
+- AIsouler 订阅作者已停止维护，内置它主要是为了兼容老规则，主力规则是 Lin-arm 的 v595。
+- 规则按 11 个类别组织：**开屏广告**（默认开启）、青少年模式、更新提示、评价提示、通知提示、
+  权限提示、局部广告、全屏广告、分段广告、功能类、其他。
+- 覆盖的应用既有微信、QQ、支付宝、淘宝、抖音、哔哩哔哩、今日头条、小红书、京东、知乎这类常用 App，
+  也包括大量银行、工具、阅读、出行类应用。
+
+**完整的覆盖应用清单（978 款）与分类说明见 [docs/内置规则.md](docs/内置规则.md)。**
+
+应用内的开关粒度更细：可以按「应用」或「规则组」单独开关，也可以导入自己的订阅地址。
+
 ## 功能特性
 
 - **一键配置向导**：一键开启基础无障碍、一键安装内置 Shizuku、一键解除系统限制、一键授权。
-- **内置两套订阅规则**：GKD 订阅 `v595` 与 AIsouler 订阅 `v406`，安装后默认全部启用，开箱即用。
+- **内置两套订阅规则**：Lin-arm（id667）`v595` 与 AIsouler `v406`，覆盖 978 款应用，
+  开箱即用（详见 [内置规则](#内置规则)）。
 - **多种提权方式**：无障碍（基础）、Shizuku 增强模式、无线调试 ADB、Root、外部授权器，按设备情况任选其一。
 - **触发记录与事件日志**：能看到每条规则在什么时间、对哪个应用、点击了什么。
 - **规则管理**：按应用 / 规则组单独开关，支持为指定应用添加或编辑规则。
@@ -142,6 +158,7 @@ GPL-3.0 要求在分发安装包时向接收者提供完整的对应源码，对
 - 本项目基于 [gkd-kit/gkd](https://github.com/gkd-kit/gkd) 二次开发，遵循 **GPL-3.0** 授权，详见 [LICENSE](LICENSE)。
 - 内置规则订阅来自 [Lin-arm/GKD_subscription](https://github.com/Lin-arm/GKD_subscription)（👻Fork 版，id667 v595）
   与 [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)（v406）。
+  规则覆盖范围与完整应用清单见 [docs/内置规则.md](docs/内置规则.md)。
 - 内置 [Shizuku](https://github.com/RikkaApps/Shizuku)（Apache-2.0）用于免 Root 提权。
 
 第三方组件的详细版权与许可信息见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
